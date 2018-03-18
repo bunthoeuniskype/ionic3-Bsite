@@ -14,6 +14,11 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 
+import { TabsPage } from '../pages/tabs/tabs';
+//import { ProfilePage } from '../pages/profile-page/profile-page';
+//import { BookInfoPage } from '../pages/books-info-page/books-info-page';
+import { SiteInfoPage } from '../pages/site-info/site-info';
+
 let storage = new Storage({});
 
 export function getAuthHttp(http) {
@@ -30,7 +35,11 @@ export function createTranslateLoader(http: Http) {
 
 @NgModule({
   declarations: [
-    MyApp
+    MyApp,
+    TabsPage,
+   //ProfilePage,
+   // BookIPage,
+    SiteInfoPage
   ],
   imports: [
     BrowserModule,
@@ -47,7 +56,9 @@ export function createTranslateLoader(http: Http) {
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp
+    MyApp,
+    SiteInfoPage,
+    TabsPage
   ],
   providers: [
     StatusBar,

@@ -30,6 +30,7 @@ export class MyApp {
     this.pages = [
       {title: 'page.profile', component: 'ProfilePage'},
       {title: 'page.books.list', component: 'BooksPage'},
+      {title: 'Site Info', component: 'SiteInfoPage'},
       {title: 'page.logout', component: 'LoginPage', method: 'logout'}
     ];
 

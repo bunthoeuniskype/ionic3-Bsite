@@ -6,5 +6,6 @@ export let cfg = {
     login: '/auth/login',
     refresh:'/refresh',
   },
-  books: '/books'
+  books: '/books',
+  clients: '/clients'
 };

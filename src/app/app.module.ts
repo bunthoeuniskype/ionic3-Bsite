@@ -13,11 +13,12 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
+import { ClientProvider } from '../providers/client/client';
 
-import { TabsPage } from '../pages/tabs/tabs';
+//import { TabsPage } from '../pages/tabs/tabs';
 //import { ProfilePage } from '../pages/profile-page/profile-page';
 //import { BookInfoPage } from '../pages/books-info-page/books-info-page';
-import { SiteInfoPage } from '../pages/site-info/site-info';
+//import { SiteInfoPage } from '../pages/site-info/site-info';
 
 let storage = new Storage({});
 
@@ -36,14 +37,14 @@ export function createTranslateLoader(http: Http) {
 @NgModule({
   declarations: [
     MyApp,
-    TabsPage,
+    //TabsPage,
    //ProfilePage,
    // BookIPage,
-    SiteInfoPage
+    //SiteInfoPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp,{tabsPlacement: 'bottom'}),
     IonicStorageModule.forRoot(),
     HttpModule,
     TranslateModule.forRoot({
@@ -57,8 +58,8 @@ export function createTranslateLoader(http: Http) {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    SiteInfoPage,
-    TabsPage
+    //SiteInfoPage,
+   // TabsPage
   ],
   providers: [
     StatusBar,
@@ -71,7 +72,8 @@ export function createTranslateLoader(http: Http) {
       deps: [Http]
     },
     AuthService,
-    BooksService
+    BooksService,
+    ClientProvider
   ]
 })
 export class AppModule {}

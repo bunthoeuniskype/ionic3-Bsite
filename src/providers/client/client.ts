@@ -38,8 +38,8 @@ export class ClientProvider {
       });
   }
 
-  add(book: ClientModel) {
-    return this.authHttp.post(this.cfg.apiUrl + this.cfg.clients, book)
+  add(client: ClientModel) {
+    return this.authHttp.post(this.cfg.apiUrl + this.cfg.clients, client)
       .toPromise()
       .then(() => {
         return true;
@@ -47,8 +47,8 @@ export class ClientProvider {
       .catch(e => console.log("create book error", e));
   }
 
-  update(book: ClientModel) {
-    return this.authHttp.put(this.cfg.apiUrl + this.cfg.clients + '/' + book.id, book)
+  update(client: ClientModel) {
+    return this.authHttp.put(this.cfg.apiUrl + this.cfg.clients + '/' + client.id, client)
       .toPromise()
       .then(rs => {
         console.log(rs, rs.json());

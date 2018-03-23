@@ -11,13 +11,29 @@
       <ion-icon name="menu"></ion-icon>
     </button>    
     <ion-title>Site Info</ion-title>
+   <ion-buttons end>
+        <button (click)="openPage('SiteAddPage')">
+            <ion-icon name="add"></ion-icon>
+        </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-list *ngIf="datas">
-    <button ion-item  *ngFor="let data of datas" (click)="dataInfo(data)">{{ data.project_name }}</button>
+  <ion-list>
+     <ion-item-sliding  *ngFor="let data of datas"> 
+    <ion-item>
+    {{ data.project_name }}
+    </ion-item> 
+    <ion-item-options>
+      <button class="button button-positive" (click)="editInfo(data)">  <ion-icon ios="ios-create" md="md-create"></ion-icon></button>
+      <button  class="button button-assertive" (click)="deleteInfo(data)"> <ion-icon ios="ios-trash" md="md-trash"></ion-icon></button>
+      <button class="button button-balanced" (click)="dataInfo(data)"> <ion-icon name="information-circle"></ion-icon></button>
+    </ion-item-options>
+  </ion-item-sliding>
+
+    <!--<button ion-item  *ngFor="let data of datas" (click)="dataInfo(data)">{{ data.project_name }}</button>-->
   </ion-list>
 </ion-content>

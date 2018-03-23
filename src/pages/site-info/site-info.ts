@@ -20,7 +20,6 @@ export class SiteInfoPage extends ProtectedPage{
 
   public datas: any;
 
-
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage,public clientService: ClientProvider) {
     
     super(navCtrl, navParams, storage);     
@@ -30,11 +29,28 @@ export class SiteInfoPage extends ProtectedPage{
     this.clientService.getAll().then(res => this.datas = res.clients);
   }
   
-  dataInfo(data: ClientModel) {
-    console.log(data);
-   // this.navCtrl.push('BookInfoPage', {book: book});
+  dataInfo(client: ClientModel) {
+    this.navCtrl.push('SiteDetailPage', {client: client});
   }
 
+  editInfo(client:ClientModel){
+     this.navCtrl.push('SiteEditPage', {client: client}); 
+  }
+
+  deleteInfo(client: ClientModel){
+    let index = this.datas.indexOf(client);
+    // if(index > -1){
+    //   this.datas.splice(index, 1);
+    // }    
+    this.clientService.remove(client.id)
+      .then(res => (index > -1) ? this.datas.splice(index, 1) :  this.navCtrl.pop())
+      .catch(e => console.log("delete client error", e)); 
+  }
+
+  openPage(page: string) {
+    this.navCtrl.push(page);
+  }
+  
   // ionViewDidLoad() {
   //   console.log('ionViewDidLoad SiteInfoPage');
   // }

@@ -20,38 +20,37 @@
           
           <ion-item>
             <ion-label floating>Project Name:</ion-label>
-            <ion-input type="text" [(ngModel)]="project_name" name="project_name"></ion-input>
-          </ion-item>
-          
+            <ion-input type="text" [(ngModel)]="client.project_name" name="project_name"></ion-input>
+          </ion-item>          
           
           <ion-item>
             <ion-label floating>Client Name :</ion-label>
-            <ion-input type="text" [(ngModel)]="name" name="name"></ion-input>
+            <ion-input type="text" [(ngModel)]="client.name" name="name"></ion-input>
           </ion-item>
           
           <ion-item>
             <ion-label floating>Phone:</ion-label>
-            <ion-input type="text" [(ngModel)]="phone" name="phone"></ion-input>
+            <ion-input type="text" [(ngModel)]="client.phone" name="phone"></ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label floating>Email:</ion-label>
-            <ion-input type="text" [(ngModel)]="email" name="email"></ion-input>
+            <ion-input type="text" [(ngModel)]="client.email" name="email"></ion-input>
           </ion-item>
           
           <ion-item>
             <ion-label floating>Price :</ion-label>
-            <ion-input type="text" [(ngModel)]="price" name="price"></ion-input>
+            <ion-input type="text" [(ngModel)]="client.price" name="price"></ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label floating>Url :</ion-label>
-            <ion-input type="text" [(ngModel)]="url" name="url"></ion-input>
+            <ion-input type="text" [(ngModel)]="client.url" name="url"></ion-input>
           </ion-item>
 
            <ion-item>
             <ion-label floating>Key :</ion-label>
-            <ion-input type="text" [(ngModel)]="key" name="key"></ion-input>
+            <ion-input type="text" [(ngModel)]="client.key" name="key"></ion-input>
           </ion-item>
 
           <button margin-top ion-button type="submit" [disabled]="!clientData.valid">Submit</button>

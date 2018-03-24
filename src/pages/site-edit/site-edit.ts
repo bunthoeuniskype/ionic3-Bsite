@@ -27,21 +27,21 @@ export class SiteEditPage extends ProtectedPage implements OnInit{
     public clientProvider: ClientProvider) {
 
        super(navCtrl, navParams, storage);  
+       this.client = navParams.get('client');    
        console.log(this.client);
-       this.clientData = this.formBuilder.group({
-      'product_name': [this.client.project_name],
-      'name': [this.client.name],
-      'phone': [this.client.phone],
-      'email': [this.client.email],
-      'price': [this.client.price],
-      'url': [this.client.url],
-      'key':[this.client.name]
-    }); 
       
   }
 
   ngOnInit(): any {      
-    
+      this.clientData = this.formBuilder.group({
+      product_name: [this.client.project_name],
+      name: [this.client.name],
+      phone: [this.client.phone],
+      email: [this.client.email],
+      price: [this.client.price],
+      url: [this.client.url],
+      key:[this.client.key]
+    }); 
   }
 
   onSubmit(clientData) {    

@@ -21,5 +21,17 @@
       <ion-slide *ngFor="let slide of slideData">
         <img src="{{slide.image}}" />
       </ion-slide>
-    </ion-slides>
+   </ion-slides>
+
+   <button ion-button full (click)="loginWithFB()">Login FB!</button> 
+
+   <ion-card *ngIf="UserFB">     
+    <ion-card-header>{{ UserFB.username }}</ion-card-header>
+    <img [src]="UserFB.picture" />
+    <ion-card-content>
+      <p>Email: {{ UserFB.email }}</p>
+      <p>First Name: {{ UserFB.first_name }}</p>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

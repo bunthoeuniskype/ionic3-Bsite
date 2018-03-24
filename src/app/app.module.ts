@@ -14,6 +14,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import { ClientProvider } from '../providers/client/client';
+import { Facebook } from '@ionic-native/facebook';
 
 //import { TabsPage } from '../pages/tabs/tabs';
 //import { ProfilePage } from '../pages/profile-page/profile-page';
@@ -73,7 +74,8 @@ export function createTranslateLoader(http: Http) {
     },
     AuthService,
     BooksService,
-    ClientProvider
+    ClientProvider,
+    Facebook
   ]
 })
 export class AppModule {}

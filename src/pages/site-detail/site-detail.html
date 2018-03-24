@@ -14,5 +14,37 @@
 
 
 <ion-content padding>
-
+  <ion-card *ngIf="client">
+    <ion-card-content>
+      <h1>{{ client.project_name }}</h1>    
+    </ion-card-content>
+    <ion-card-content>
+      <h2>
+        <ion-icon ios="ios-arrow-dropright" md="md-arrow-dropright"  icon-left small></ion-icon>
+        {{ client.name }}
+      </h2>    
+    </ion-card-content>
+    <ion-card-content>
+      <h2>
+         <ion-icon ios="ios-arrow-dropright" md="md-arrow-dropright"  icon-left small></ion-icon>
+        {{ client.phone }}
+       </h2>    
+    </ion-card-content>
+    <ion-card-content>
+      <h2>
+         <ion-icon ios="ios-arrow-dropright" md="md-arrow-dropright"  icon-left small></ion-icon>
+        {{ client.email }}
+      </h2>    
+    </ion-card-content>
+    <ion-card-content>
+      <h4>
+      <ion-icon ios="ios-arrow-dropright" md="md-arrow-dropright"  icon-left small></ion-icon>
+      {{ client.url }}
+    </h4>    
+      <h5>
+        <ion-icon ios="ios-arrow-dropright" md="md-arrow-dropright"  icon-left small></ion-icon>
+          {{ client.key }}
+     </h5> 
+    </ion-card-content>
+  </ion-card>
 </ion-content>

@@ -93,4 +93,5 @@
         <variable name="APP_ID" value="1826860480870472" />
         <variable name="APP_NAME" value="Biste Solution" />
     </plugin>
+    <engine name="android" spec="~7.0.0" />
 </widget>

@@ -54,5 +54,13 @@
       "locator": "ios"
     }
   ],
-  "description": "B-Site Feed"
+  "description": "B-Site Feed",
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-facebook4": {
+        "APP_ID": "1826860480870472",
+        "APP_NAME": "Biste Solution"
+      }
+    }
+  }
 }

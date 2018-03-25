@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "160201803983",
+    "project_id": "b-site-solution"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:160201803983:android:efad28d383862441",
+        "android_client_info": {
+          "package_name": "app.bsitezone.com.MainActivity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "160201803983-4jolplkc57gu3psplc2v2bmpmoe90g2e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "app.bsitezone.com.MainActivity",
+            "certificate_hash": "019d3c2025ae8da3c19d2969a764a7e094263203"
+          }
+        },
+        {
+          "client_id": "160201803983-a0bt9edaj9gbho2luh7qmepg6eja46ng.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXTiM86R0xqnlW8dTZweXmkXFB_IlPshs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

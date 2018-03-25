@@ -22,10 +22,11 @@
             <ion-input type="password" formControlName="password"></ion-input>
           </ion-item>
 
-          <button margin-top ion-button type="submit" [disabled]="!loginData.valid">{{ 'button.login' | translate }}</button>
+          <button ion-button full margin-top ion-button type="submit" [disabled]="!loginData.valid">{{ 'button.login' | translate }}</button>
 
         </form>
-    
+          <button ion-button full (click)="loginWithFB()">Login Facebook!</button> 
+          <button ion-button full  (click)="loginWithGP()">Login Google Plus!</button> 
         <ion-row padding-top>
           <ion-col>
             <button ion-button clear block (click)="openPage('RegisterPage')">{{ 'button.new_registration' | translate }}</button>
@@ -37,9 +38,28 @@
         
       </ion-col>
 
-    </ion-row>
-    
-    
+    </ion-row>    
+
+
+   <ion-card *ngIf="UserFB">     
+    <ion-card-header>{{ UserFB.username }}</ion-card-header>
+    <img [src]="UserFB.picture" />
+    <ion-card-content>
+      <p>Email: {{ UserFB.email }}</p>
+      <p>First Name: {{ UserFB.first_name }}</p>
+      <p>Id: {{ UserFB.id }}</p>
+    </ion-card-content>
+  </ion-card> 
+
+   <ion-card *ngIf="UserGP">     
+    <ion-card-header>{{ UserFB.displayName }}</ion-card-header>
+    <img [src]="UserGP.imageUrl" />
+    <ion-card-content>
+      <p>Email: {{ UserGP.email }}</p>
+      <p>Id: {{ UserGP.userId }}</p>
+    </ion-card-content>
+  </ion-card>
+
     
   </ion-grid>
 

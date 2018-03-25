@@ -94,4 +94,7 @@
         <variable name="APP_NAME" value="Biste Solution" />
     </plugin>
     <engine name="android" spec="~7.0.0" />
+    <plugin name="cordova-plugin-googleplus" spec="^5.2.1">
+        <variable name="REVERSED_CLIENT_ID" value="160201803983" />
+    </plugin>
 </widget>

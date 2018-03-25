@@ -13,6 +13,13 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
+import { ClientProvider } from '../providers/client/client';
+import { Facebook } from '@ionic-native/facebook';
+
+//import { TabsPage } from '../pages/tabs/tabs';
+//import { ProfilePage } from '../pages/profile-page/profile-page';
+//import { BookInfoPage } from '../pages/books-info-page/books-info-page';
+//import { SiteInfoPage } from '../pages/site-info/site-info';
 
 let storage = new Storage({});
 
@@ -30,11 +37,15 @@ export function createTranslateLoader(http: Http) {
 
 @NgModule({
   declarations: [
-    MyApp
+    MyApp,
+    //TabsPage,
+   //ProfilePage,
+   // BookIPage,
+    //SiteInfoPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp,{tabsPlacement: 'bottom'}),
     IonicStorageModule.forRoot(),
     HttpModule,
     TranslateModule.forRoot({
@@ -47,7 +58,9 @@ export function createTranslateLoader(http: Http) {
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp
+    MyApp,
+    //SiteInfoPage,
+   // TabsPage
   ],
   providers: [
     StatusBar,
@@ -60,7 +73,9 @@ export function createTranslateLoader(http: Http) {
       deps: [Http]
     },
     AuthService,
-    BooksService
+    BooksService,
+    ClientProvider,
+    Facebook
   ]
 })
 export class AppModule {}

@@ -25,9 +25,7 @@ export class BookEditPage extends ProtectedPage {
     public booksService: BooksService) {
 
     super(navCtrl, navParams, storage);
-
     this.book = navParams.get('book');
-
 
     this.bookData = this.formBuilder.group({
       title: [this.book.title, Validators.required],

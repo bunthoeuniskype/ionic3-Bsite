@@ -44,6 +44,7 @@ export class MyApp {
     this.pages = [  
       {title: 'page.books.list', component: 'BooksPage'},
       {title: 'Maps', component: 'MapPage'},
+      {title: 'Notifications', component: 'NotificationsPage'},
       {title: 'page.logout', component: 'LoginPage', method: 'logout'}
     ];
     

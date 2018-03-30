@@ -19,6 +19,7 @@ export class FooterPage {
   profileRoot = 'ProfilePage';
   tab4Root = 'BooksPage';
   tab5Root = 'MapPage';
+  tab6Root = 'NotificationsPage';
   mySelectedIndex: number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {

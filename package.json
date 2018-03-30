@@ -32,6 +32,8 @@
     "cordova-plugin-console": "^1.0.5",
     "cordova-plugin-device": "^1.1.4",
     "cordova-plugin-facebook4": "^1.9.1",
+    "cordova-plugin-geolocation": "^4.0.1",
+    "cordova-plugin-googlemaps": "^2.2.9",
     "cordova-plugin-googleplus": "^5.2.1",
     "cordova-plugin-splashscreen": "^4.0.3",
     "cordova-plugin-statusbar": "^2.2.2",
@@ -78,6 +80,13 @@
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-googleplus": {
         "REVERSED_CLIENT_ID": "160201803983"
+      },
+      "cordova-plugin-geolocation": {},
+      "cordova-plugin-googlemaps": {
+        "API_KEY_FOR_ANDROID": "AIzaSyBtqY_rX5R9gSLcRijaDer5zU2ysy2YLC4",
+        "API_KEY_FOR_IOS": "AIzaSyBXTiM86R0xqnlW8dTZweXmkXFB_IlPshs",
+        "PLAY_SERVICES_VERSION": "12.0.0",
+        "ANDROID_SUPPORT_V4_VERSION": "24.1.0"
       }
     },
     "platforms": [

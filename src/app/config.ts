@@ -7,5 +7,7 @@ export let cfg = {
     refresh:'/refresh',
   },
   books: '/books',
-  clients: '/clients'
+  clients: '/clients',
+  articles:'/articles',
+  
 };

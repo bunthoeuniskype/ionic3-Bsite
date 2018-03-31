@@ -19,6 +19,7 @@ import { GooglePlus } from '@ionic-native/google-plus';
 import { ParallaxHeaderDirective } from '../directives/parallax-header/parallax-header';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { ArticleProvider } from '../providers/article/article';
 
 //import { TabsPage } from '../pages/tabs/tabs';
 //import { ProfilePage } from '../pages/profile-page/profile-page';
@@ -83,7 +84,8 @@ export function createTranslateLoader(http: Http) {
     BooksService,
     ClientProvider,
     Facebook,
-    GooglePlus
+    GooglePlus,
+    ArticleProvider
   ]
 })
 export class AppModule {}

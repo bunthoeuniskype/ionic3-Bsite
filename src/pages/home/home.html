@@ -22,14 +22,14 @@
         <img src="{{slide.image}}" />
       </ion-slide>
    </ion-slides>
-   <!-- Cards containing quotes -->
-  <ion-card *ngFor="let quote of quotes; let i = index;">
-    <!-- Quote aurthor -->
+   <!-- Cards containing articles -->
+  <ion-card *ngFor="let data of articles; let i = index;">
+    <!-- data aurthor -->
     <ion-card-header>   
-      <h2>{{ quote.title }}</h2>   
+      <h2>{{ data.attributes.title }}</h2>   
     </ion-card-header>
-    <!-- Quote Title -->
-    <ion-card-content [innerHtml]=quote.content></ion-card-content>
+    <!-- data Title -->
+    <ion-card-content [innerHtml]=data.attributes.content></ion-card-content>
     <!-- Sharing Icons -->
     <ion-grid>
       <ion-row>

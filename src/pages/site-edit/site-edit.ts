@@ -2,7 +2,7 @@ import { OnInit, Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {ProtectedPage} from '../protected-page/protected-page';
 import {Storage} from '@ionic/storage';
-import {Validators, FormBuilder, FormGroup,FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import {ClientProvider} from '../../providers/client/client';
 import {ClientModel} from '../../models/client.model';
 

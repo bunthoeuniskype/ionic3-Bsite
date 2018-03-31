@@ -2,7 +2,7 @@ import { OnInit, Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {ProtectedPage} from '../protected-page/protected-page';
 import {Storage} from '@ionic/storage';
-import {Validators, FormBuilder, FormGroup,FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import {ClientProvider} from '../../providers/client/client';
 /**
  * Generated class for the SiteAddPage page.
@@ -17,8 +17,7 @@ import {ClientProvider} from '../../providers/client/client';
 })
 export class SiteAddPage extends ProtectedPage implements OnInit{
 
-  private clientData: FormGroup;
-  private myData: any;
+  private clientData: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public storage: Storage,
     public formBuilder: FormBuilder,
@@ -29,7 +28,7 @@ export class SiteAddPage extends ProtectedPage implements OnInit{
   }
 
   ngOnInit(): any {      
-    this.myData = this.formBuilder.group({
+    this.clientData = this.formBuilder.group({
       'product_name': [''],
       'name': [''],
       'phone': [''],
@@ -41,8 +40,8 @@ export class SiteAddPage extends ProtectedPage implements OnInit{
   }
 
   onSubmit(clientData) {    
-    this.myData = clientData;
-    this.clientProvider.add(this.myData.value)
+    this.clientData = clientData;
+    this.clientProvider.add(this.clientData.value)
       .then(() => this.navCtrl.push('SiteInfoPage'))
       .catch((e) => console.log("add site error", e));
   }

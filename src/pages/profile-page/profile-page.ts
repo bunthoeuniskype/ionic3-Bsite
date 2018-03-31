@@ -1,4 +1,4 @@
-import { Component,Injectable  } from '@angular/core';
+import { Component  } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController,LoadingController, ToastController } from 'ionic-angular';
 import {ProtectedPage} from '../protected-page/protected-page';
 import {Storage} from '@ionic/storage';

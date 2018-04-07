@@ -20,6 +20,7 @@ import { ParallaxHeaderDirective } from '../directives/parallax-header/parallax-
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { ArticleProvider } from '../providers/article/article';
+import { CommonProvider } from '../providers/common/common';
 
 //import { TabsPage } from '../pages/tabs/tabs';
 //import { ProfilePage } from '../pages/profile-page/profile-page';
@@ -85,7 +86,8 @@ export function createTranslateLoader(http: Http) {
     ClientProvider,
     Facebook,
     GooglePlus,
-    ArticleProvider
+    ArticleProvider,
+    CommonProvider
   ]
 })
 export class AppModule {}

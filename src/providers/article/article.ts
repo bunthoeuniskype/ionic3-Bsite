@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import {AuthHttp} from 'angular2-jwt';
-import { Http } from '@angular/http';
+import { Http,Response,Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
+import { Observable } from 'rxjs/Observable';
 import *  as AppConfig from '../../app/config';
 
 /*
@@ -20,12 +21,53 @@ export class ArticleProvider {
     this.cfg = AppConfig.cfg;
   }
 
-  getAll() {
-    return this.http.get(this.cfg.apiUrl + this.cfg.articles)
+  getAll(page,limit) {
+    // return this.http.get(this.cfg.apiUrl + this.cfg.articles+"?page="+page+"&limit="+limit)
+    //   .toPromise()
+    //   .then(rs => {
+    //     return rs.json();
+    //   }).catch(this.handleError);
+     return new Promise((resolve, reject) =>{
+      let headers = new Headers();
+      this.http.get(this.cfg.apiUrl + this.cfg.articles+"?page="+page+"&limit="+limit, {headers: headers}).
+      subscribe(res =>{
+        resolve(res.json());
+      }, (err) =>{
+        reject(err);
+      });
+    });      
+  }
+
+  getMore(page,limit) {
+    return this.http.get(this.cfg.apiUrl + this.cfg.articles+"?page="+page+"&limit="+limit)
       .toPromise()
       .then(rs => {
         return rs.json();
-      });
+      }).catch(this.handleError);    
+  }
+
+    // getAll(page,limit) : Observable<string[]> {
+    //   return this.http.get(this.cfg.apiUrl + this.cfg.articles+"?page="+page+"&limit="+limit)
+    //                   .map(this.extractData)
+    //                   .catch(this.handleError);
+    // }
+
+    private handleError (error: Response | any) {
+    let errMsg: string;
+    if (error instanceof Response) {
+      const body = error.json() || '';
+      const err = body.error || JSON.stringify(body);
+      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+    } else {
+      errMsg = error.message ? error.message : error.toString();
+    }
+    console.error(errMsg);
+    return Observable.throw(errMsg);
+  }
+
+ private extractData(res: Response) {
+  let body = res.json();
+  return body || { };
   }
 
 }

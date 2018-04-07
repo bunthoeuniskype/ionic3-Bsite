@@ -17,6 +17,12 @@
 
 
 <ion-content parallax-header>
+
+   <ion-refresher (ionRefresh)="doRefresh($event)">
+   <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="bubbles" refreshingText="Refreshing...">
+   </ion-refresher-content>
+  </ion-refresher>
+
   <ion-slides autoplay="5000" loop="true" speed="3000" class="slide-zoom">
       <ion-slide *ngFor="let slide of slideData">
         <img src="{{slide.image}}" />
@@ -26,7 +32,7 @@
   <ion-card *ngFor="let data of articles; let i = index;">
     <!-- data aurthor -->
     <ion-card-header>   
-      <h2>{{ data.attributes.title }}</h2>   
+      <h2>{{ data.attributes.title }} {{ data.id }}</h2>   
     </ion-card-header>
     <!-- data Title -->
     <ion-card-content [innerHtml]=data.attributes.content></ion-card-content>
@@ -56,10 +62,16 @@
       </ion-row>
     </ion-grid>
   </ion-card>
-  <ion-refresher (ionRefresh)="doRefresh($event)">
-   <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="bubbles" refreshingText="Refreshing...">
-   </ion-refresher-content>
-  </ion-refresher>
+
+  <ion-card *ngIf="noRecords">
+  <ion-item>
+    No Records
+    </ion-item>
+  </ion-card>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)"><!-- *ngIf="page < totalPage"-->
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
     <!--<ion-list>      
     <ion-item *ngFor="let post of posts">
       <img [src]="post.data.url" />

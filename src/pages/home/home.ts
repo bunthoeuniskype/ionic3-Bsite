@@ -18,13 +18,13 @@ import {CommonProvider} from "../../providers/common/common";
 })
 export class HomePage {
 
-  slideData : any;
+  //slideData : any;
   datas:any;
   errorMessage: string;
   //posts :any;
  // articles : any;
   page =1;
-  limit =2;
+  limit =4;
   totalData = 0;
   totalPage = 0;
 
@@ -40,7 +40,7 @@ export class HomePage {
 
   constructor(public common: CommonProvider,public navCtrl: NavController, public navParams: NavParams,private http:Http, private socialSharing: SocialSharing,public articleService: ArticleProvider,) {
 
-    this.slideData = [{ image: "https://www.jssor.com/demos/img/gallery/1300x500/001.jpg" },{ image: "https://www.jssor.com/demos/img/gallery/1300x500/002.jpg" },{ image: "https://www.jssor.com/demos/img/gallery/1300x500/003.jpg" }];
+    //this.slideData = [{ image: "https://www.jssor.com/demos/img/gallery/1300x500/001.jpg" },{ image: "https://www.jssor.com/demos/img/gallery/1300x500/002.jpg" },{ image: "https://www.jssor.com/demos/img/gallery/1300x500/003.jpg" }];
     // this.http.get('https://www.reddit.com/r/gifs/new/.json?limit=10').map(res => res.json()).subscribe(data => {
     //     this.posts = data.data.children;
     // }); 
@@ -144,5 +144,9 @@ twitterShare(index){
     });
 
 }
+
+ openPage(page: string) {
+    this.navCtrl.push(page);
+  }
 
 }

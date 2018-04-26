@@ -11,6 +11,7 @@ export interface PageInterface {
   title: string;
   component: any;
   index?: number;
+  method?: null;
 }
 
 @Component({
@@ -23,6 +24,7 @@ export class MyApp {
     // set our app's pages
   appPages: PageInterface[] = [
     {title: 'page.books.list', component: FooterPage, index: 4 }, 
+    {title: 'Add Post', component: FooterPage, index: 7 },
   ];
   rootPage: any = 'FooterPage';
 
@@ -42,9 +44,10 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [  
-      {title: 'page.books.list', component: 'BooksPage'},
+      // {title: 'page.books.list', component: 'BooksPage'},
       {title: 'Maps', component: 'MapPage'},
       {title: 'Notifications', component: 'NotificationsPage'},
+      {title: 'Add Post', component: 'PostPage'},
       {title: 'page.logout', component: 'LoginPage', method: 'logout'}
     ];
     
@@ -63,9 +66,9 @@ export class MyApp {
 
   openPage(page:PageInterface) {
 
-    // if (page.method && page.method === 'logout') {
-    //   this.authService.logout();
-    // }
+    if (page.method && page.method === 'logout') {
+      this.authService.logout();
+    }
     
     this.menu.close();
 

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import {AuthHttp} from 'angular2-jwt';
 import { Http,Response,Headers } from '@angular/http';
+import {AuthHttp} from 'angular2-jwt';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
 import *  as AppConfig from '../../app/config';
-
+import {ArticleModel} from '../../models/article.model';
 /*
   Generated class for the ArticleProvider provider.
 
@@ -15,9 +15,9 @@ import *  as AppConfig from '../../app/config';
 @Injectable()
 export class ArticleProvider {
 
-  private cfg: any;
-  
-  constructor(public http: Http) {
+  private cfg: any; 
+    
+  constructor(public http: Http,public authHttp: AuthHttp) {
     this.cfg = AppConfig.cfg;
   }
 
@@ -68,6 +68,15 @@ export class ArticleProvider {
  private extractData(res: Response) {
   let body = res.json();
   return body || { };
+  }
+
+  add(artcle: ArticleModel) {
+    return this.authHttp.post(this.cfg.apiUrl + this.cfg.articles, artcle)
+      .toPromise()
+      .then(() => {
+        return true;
+      })
+      .catch(e => console.log("create book error", e));
   }
 
 }

@@ -92,6 +92,7 @@ export class AuthService {
         this.http.get(this.cfg.apiUrl + this.cfg.user.refresh+"?Token="+thetoken)
          .map(res => res.json())
          .subscribe(res => {
+           
            console.log(JSON.stringify(res));
            console.log(res.status);
            // If the API returned a successful response, mark the user as logged in

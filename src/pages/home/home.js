@@ -8,6 +8,6 @@ export default StyleSheet.create({
     'lineHeight': [{ 'unit': 'px', 'value': 20 }],
     'float': 'left',
     'display': 'block',
-    'width': [{ 'unit': '%H', 'value': 0.15 }]
+    'width': [{ 'unit': 'px', 'value': 45 }]
   }
 });

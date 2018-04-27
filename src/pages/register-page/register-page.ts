@@ -37,9 +37,10 @@ export class RegisterPage {
   }
 
   register() {
-    
-    this.authService.register(this.regData.value)
-      .then(() => this.navCtrl.setRoot('ProfilePage'))
+      this.authService.register(this.regData.value)
+      .then(() =>{
+        // this.navCtrl.setRoot('HomePage')
+      })
       .catch(e => console.log("reg error", e));
   }
 

@@ -5,6 +5,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import {ArticleProvider} from '../../providers/article/article';
 import {CommonProvider} from "../../providers/common/common";
 
+
 /**
  * Generated class for the HomePage page.
  *
@@ -146,7 +147,8 @@ twitterShare(index){
 }
 
  openPage(page: string) {
-    this.navCtrl.push(page);
+    //this.navCtrl.push(page);
+    this.navCtrl.setRoot(page);
   }
 
 }

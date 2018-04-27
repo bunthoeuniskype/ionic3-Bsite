@@ -1,5 +1,6 @@
 {
   "label": {
+    "email_or_name": "Email or Username",
     "email": "Email address",
     "password": "Password",
     "name": "Name",

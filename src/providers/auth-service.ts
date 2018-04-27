@@ -7,62 +7,78 @@ import {CredentialsModel} from '../models/credentials.model';
 import {AuthHttp, JwtHelper, tokenNotExpired} from 'angular2-jwt';
 import {Observable} from 'rxjs/Rx';
 import *  as AppConfig from '../app/config';
+import {CommonProvider} from "./common/common";
+import { MenuController,NavController,App } from 'ionic-angular';
 
 @Injectable()
-export class AuthService {
+export class AuthService {  
 
   private cfg: any;
   idToken: string;
   refreshSubscription: any;
-
+  private resData:any;
 
   constructor(
     private storage: Storage,
     private http: Http,
-    private jwtHelper:JwtHelper,
-    private authHttp: AuthHttp) {
-
+    private jwtHelper:JwtHelper,      
+    private comm:CommonProvider, 
+    private menuCtrl: MenuController,
+    // private navCtrl: NavController,
+    private app:App,
+    private authHttp: AuthHttp) {    
     this.cfg = AppConfig.cfg;
     this.storage.get('id_token').then(token => {
         this.idToken = token;
     });
+    //this.navCtrl = app.getActiveNav();
+  }
 
+ redirectToHome() {  
+    this.app.getRootNav().push('HomePage');
+    this.menuCtrl.enable(true);
   }
 
   register(userData: UserModel) {
 
     return this.http.post(this.cfg.apiUrl + this.cfg.user.register, userData)
       .toPromise()
-      .then(data => {
-        this.saveData(data)
+      .then(data => {       
         let rs = data.json();
-        this.idToken = rs.token;
-        this.scheduleRefresh();
+        if(rs.status == 'failed'){
+              this.comm.presentToast(rs.message);             
+          }else{
+               this.comm.presentToast(rs.message);
+               this.saveData(data);             
+               this.idToken = rs.token;
+               this.scheduleRefresh();
+               this.redirectToHome();
+          }
       })
       .catch(e => console.log("reg error", e));
-
-
   }
 
   login(credentials: CredentialsModel) {
-
     return this.http.post(this.cfg.apiUrl + this.cfg.user.login, credentials)
       .toPromise()
       .then(data => {
-          let rs = data.json();
-         this.saveData(data);
-         this.idToken = rs.token;
-         this.scheduleRefresh();
+         let rs = data.json();  
+        
+         if(rs.status == 'failed'){
+              this.comm.presentToast(rs.message);
+          }else{              
+               this.comm.presentToast(rs.message);
+               this.saveData(data);
+               this.idToken = rs.token;
+               this.scheduleRefresh();   
+               this.redirectToHome();
+          }
       })
-      .catch(e => console.log('login error', e));
-
-
+      .catch(e => console.log('login error', e));      
   }
 
   saveData(data: any) {
-
     let rs = data.json();
-
     this.storage.set("user", rs.user);
     this.storage.set("id_token", rs.token);
   }
@@ -78,8 +94,7 @@ export class AuthService {
   isValid() {
     return tokenNotExpired();
   }
-
-
+  
   public getNewJwt() {
      // Get a new JWT from Auth0 using the refresh token saved
      // in local storage
@@ -92,7 +107,9 @@ export class AuthService {
         this.http.get(this.cfg.apiUrl + this.cfg.user.refresh+"?Token="+thetoken)
          .map(res => res.json())
          .subscribe(res => {
-           
+           if(res.status == 401){
+             this.logout();
+           }
            console.log(JSON.stringify(res));
            console.log(res.status);
            // If the API returned a successful response, mark the user as logged in
@@ -139,8 +156,6 @@ export class AuthService {
   });
 }
 
-
-
 public startupTokenRefresh() {
     // If the user is authenticated, use the token stream
     // provided by angular2-jwt and flatMap the token
@@ -183,17 +198,13 @@ public startupTokenRefresh() {
 
     });
 
-
     }
 
-
-
-
-public unscheduleRefresh() {
-// Unsubscribe fromt the refresh
-if (this.refreshSubscription) {
-this.refreshSubscription.unsubscribe();
-}
-}
+  public unscheduleRefresh() {
+    // Unsubscribe fromt the refresh
+    if (this.refreshSubscription) {
+    this.refreshSubscription.unsubscribe();
+    }
+  }
 
 }

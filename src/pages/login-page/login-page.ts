@@ -44,16 +44,16 @@ export class LoginPage {
   login() {
     //use this.loginData.value to authenticate the user
     this.authService.login(this.loginData.value)
-      .then(() => this.redirectToHome())
+    .then(res => {
+      //this.redirectToHome()
+    })
       .catch(e => console.log("login error", e));
   }
 
   redirectToHome() {
-    this.navCtrl.setRoot('ProfilePage');
+    this.navCtrl.setRoot('HomePage');
     this.menuCtrl.enable(true);
   }
-
-
 
   loginWithFB() {
     this.facebook.login(['email', 'public_profile']).then((response: FacebookLoginResponse) => {
@@ -82,6 +82,7 @@ export class LoginPage {
    * @param page string Page name
    */
   openPage(page: string) {
-    this.navCtrl.push(page);
+    this.navCtrl.setRoot(page);
+    this.menuCtrl.enable(true);
   }
 }

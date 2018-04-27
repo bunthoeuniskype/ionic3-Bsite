@@ -26,7 +26,7 @@ export class MyApp {
     {title: 'page.books.list', component: FooterPage, index: 4 }, 
     {title: 'Add Post', component: FooterPage, index: 7 },
   ];
-  rootPage: any = 'FooterPage';
+  rootPage: any = 'LoginPage';
 
   pages: Array<{title: string, component: any, method?: any}>;
 

@@ -1,0 +1,36 @@
+{
+   "label": {
+     "email_or_name": "អ៊ីមែលឬឈ្មោះអ្នកប្រើ",
+     "email": "អាសយដ្ឋានអ៊ីម៉ែល",
+     "password": "ពាក្យសម្ងាត់",
+     "name": "ឈ្មោះ",
+     "password": "ពាក្យសម្ងាត់",
+     "confirm_password": "បញ្ជាក់ពាក្យសម្ងាត់",
+     "title": "ចំណងជើង",
+     "author_name": "អ្នកនិពន្ធ",
+     "pages": "ទំព័រ"
+   },
+   "button": {
+     "login": "ចូល",
+     "register": "ចុះឈ្មោះ",
+     "new_registration": "ការចុះឈ្មោះថ្មី",
+     "forgotten_password": "ភ្លេចពាក្យសម្ងាត់?",
+     "submit": "បញ្ជូន",
+     "add_book": "បន្ថែមសៀវភៅថ្មី",
+     "edit": "កែសម្រួល",
+     "delete": "លុប"
+   },
+   "page": {
+     "login": "ចូល",
+     "logout": "ចេញ",
+     "register": "ការចុះឈ្មោះថ្មី",
+     "forgotten_password": "ការសង្គ្រោះពាក្យសម្ងាត់",
+     "profile": "ពត៌មាន",
+     "books": {
+       "list": "សៀវភៅរបស់ខ្ញុំ",
+       "add": "បន្ថែមសៀវភៅ",
+       "edit": "កែសម្រួលសៀវភៅ",
+       "preview": "មើលជាមុន"
+     }
+   }
+}

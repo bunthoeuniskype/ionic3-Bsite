@@ -20,13 +20,16 @@ import { StatusBar } from '@ionic-native/status-bar';
     storageBucket: "bsite-26dce.appspot.com",
     messagingSenderId: "939804960032"
   };
-  
+   firebase.initializeApp(config);
 @IonicPage()
 @Component({
   selector: 'page-chat-room',
   templateUrl: 'chat-room.html',
 })
 export class ChatRoomPage {
+ 
+rooms = [];
+ref = firebase.database().ref('bsite-26dce/');
 
 constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public navCtrl: NavController, public navParams: NavParams) {
   platform.ready().then(() => {
@@ -35,13 +38,39 @@ constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen
     statusBar.styleDefault();
     splashScreen.hide();
   });
-  firebase.initializeApp(config);
+  console.log(this.ref);
+  this.ref.on('value', resp => {
+    this.rooms = [];
+    this.rooms = snapshotToArray(resp);
+  });
+
 }
 
- 
+addRoom() {
+  this.navCtrl.push("AddChatRoomPage");
+}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChatRoomPage');
   }
 
+joinRoom(key) {
+  this.navCtrl.setRoot('ChatPage', {
+    key:key,
+    nickname:this.navParams.get("nickname")
+  });
 }
+
+}
+
+export const snapshotToArray = snapshot => {
+    let returnArr = [];
+
+    snapshot.forEach(childSnapshot => {
+        let item = childSnapshot.val();
+        item.key = childSnapshot.key;
+        returnArr.push(item);
+    });
+
+    return returnArr;
+};

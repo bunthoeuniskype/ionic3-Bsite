@@ -10,7 +10,6 @@ export class ProtectedPage {
   }
 
   ionViewCanEnter() {
-
     this.storage.get('id_token').then(id_token => {
       if (id_token === null) {
         this.navCtrl.setRoot('LoginPage');

@@ -44,4 +44,9 @@ export class RegisterPage {
       .catch(e => console.log("reg error", e));
   }
 
+   openPage(page: string) {
+    this.navCtrl.push(page);
+    this.menuCtrl.enable(true);
+  }
+
 }

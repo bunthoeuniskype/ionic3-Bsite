@@ -16,6 +16,7 @@ export class FooterPage {
 
   homeRoot = 'HomePage';
   siteRoot = 'SiteInfoPage';
+  ChatRoot = 'ChatRoomPage';
   profileRoot = 'ProfilePage';
   tab4Root = 'BooksPage';
   tab5Root = 'MapPage';

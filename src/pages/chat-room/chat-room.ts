@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams,Platform } from 'ionic-angular';
 import * as firebase from 'firebase';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import {Storage} from '@ionic/storage';
+import {UserModel} from '../../models/user.model';
 /**
  * Generated class for the ChatRoomPage page.
  *
@@ -27,11 +29,11 @@ import { StatusBar } from '@ionic-native/status-bar';
   templateUrl: 'chat-room.html',
 })
 export class ChatRoomPage {
- 
+public user: UserModel;
 rooms = [];
 ref = firebase.database().ref('bsite-26dce/');
 
-constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public navCtrl: NavController, public navParams: NavParams) {
+constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public storage: Storage, public navCtrl: NavController, public navParams: NavParams) {
   platform.ready().then(() => {
     // Okay, so the platform is ready and our plugins are available.
     // Here you can do any higher level native things you might need.
@@ -39,6 +41,10 @@ constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen
     splashScreen.hide();
   });
  
+  this.storage.get('user').then(user => {
+      this.user = user;
+    });
+
   this.ref.on('value', resp => {
     this.rooms = [];
     this.rooms = snapshotToArray(resp);
@@ -57,7 +63,8 @@ addRoom() {
 joinRoom(key) {
   this.navCtrl.setRoot("ChatPage", {
     key:key,
-    nickname:this.navParams.get("nickname")
+    nickname:this.user.name
+   // nickname:this.navParams.get("nickname")
   });
 }
 

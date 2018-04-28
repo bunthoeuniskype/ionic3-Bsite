@@ -1,6 +1,8 @@
 import { Component,ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams,Content } from 'ionic-angular';
 import * as firebase from 'Firebase';
+import {Storage} from '@ionic/storage';
+import {UserModel} from '../../models/user.model';
 
 /**
  * Generated class for the ChatPage page.
@@ -16,19 +18,25 @@ import * as firebase from 'Firebase';
 export class ChatPage {
   
 @ViewChild(Content) content: Content;
-
+public user: UserModel;
 data = { type:'', nickname:'', message:'' };
 chats = [];
 roomkey:string;
 nickname:string;
 offStatus:boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {
 
-    this.roomkey = this.navParams.get("key") as string;
-  this.nickname = this.navParams.get("nickname") as string;
+  this.storage.get('user').then(user => {
+      this.user = user;
+    });
+
+  this.roomkey = this.navParams.get("key") as string;
+  this.nickname = this.user.name as string;
   this.data.type = 'message';
   this.data.nickname = this.nickname;
+
+  
 
   let joinData = firebase.database().ref('bsite-26dce/'+this.roomkey+'/chats').push();
   joinData.set({
@@ -78,7 +86,7 @@ offStatus:boolean = false;
 
   this.offStatus = true;
 
-  this.navCtrl.setRoot("RoomPage", {
+  this.navCtrl.setRoot("ChatRoomPage", {
     nickname:this.nickname
   });
 }

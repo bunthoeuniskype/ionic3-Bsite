@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,MenuController } from 'ionic-angular';
 import * as firebase from 'Firebase';
+import {ProtectedPage} from '../protected-page/protected-page';
+import {Storage} from '@ionic/storage';
 /**
  * Generated class for the AddChatRoomPage page.
  *
@@ -12,16 +14,18 @@ import * as firebase from 'Firebase';
   selector: 'page-add-chat-room',
   templateUrl: 'add-chat-room.html',
 })
-export class AddChatRoomPage {
+export class AddChatRoomPage extends ProtectedPage{
 
   data = { roomname:'' };
   ref = firebase.database().ref('bsite-26dce/');
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,storage:Storage, public navParams: NavParams,public menu:MenuController) {
+     super(navCtrl, navParams, storage);
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AddChatRoomPage');
+    this.menu.enable(true);
+    //console.log('ionViewDidLoad AddChatRoomPage');
   }
 
   addRoom() {

@@ -51,7 +51,7 @@ export class LoginPage {
   }
 
   redirectToHome() {
-    this.navCtrl.setRoot('HomePage');
+    this.navCtrl.setRoot('FooterPage');
     this.menuCtrl.enable(true);
   }
 

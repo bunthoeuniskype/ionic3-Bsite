@@ -1,11 +1,12 @@
 import {Component, ViewChild} from '@angular/core';
-import {Nav, Platform,MenuController,NavController,App} from 'ionic-angular';
+import {Nav, Platform,MenuController,App} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {AuthService} from '../providers/auth-service';
 import {TranslateService} from '@ngx-translate/core';
 import {Storage} from '@ionic/storage';
 import {FooterPage} from '../pages/footer/footer';
+import {GlobalProvider} from '../providers/global/global';
 
 export interface PageInterface {
   title: string;
@@ -27,9 +28,10 @@ export class MyApp {
   ];
   rootPage: any = 'FooterPage';
   public idToken: String;
-  private stringArr = '';
 
-  pages: Array<{title: string, component: any, method?: any}>;
+  pages: Array<{title: string, component: any, method?: any,index:Number}>;
+
+  langs:Array<{title:string, value:string}>;
 
   constructor(
     public platform: Platform,
@@ -37,32 +39,40 @@ export class MyApp {
     public splashScreen: SplashScreen,
     public authService: AuthService,
     public storage:Storage,
+    public global: GlobalProvider,
     public menu: MenuController,    
     public app:App,
     //public navCtrl: NavController,
-    translate: TranslateService) {
+   public translate: TranslateService) {
 
     this.initializeApp();
 
-    translate.setDefaultLang('en');
+    translate.setDefaultLang(this.global.getLang());
+    console.log(this.global.getLang());
 
     this.menu.enable(true);
 
     // used for an example of ngFor and navigation
     this.pages = [  
       // {title: 'page.books.list', component: 'BooksPage'},
-      {title: 'Maps', component: 'MapPage'},
-      {title: 'Notifications', component: 'NotificationsPage'},
-      {title: 'Add Post', component: 'PostPage'},
+      // {title: 'Maps', component: FooterPage,index: 1},
+      // {title: 'Notifications', component: FooterPage,index: 1},
+      // {title: 'Add Post', component: FooterPage, index: 7},
     ];    
+
+      this.langs = [  
+      {title: 'khmer', value: 'kh'},
+      {title: 'english', value: 'en'},
+    ];    
+
 
     this.storage.get('id_token').then(token => {
             this.idToken = token;
           if (this.idToken === null) {
-            this.pages.push({title: 'button.login', component: 'LoginPage'});
-            this.pages.push({title: 'button.register', component: 'RegisterPage'});
+            this.pages.push({title: 'button.login', component: 'LoginPage',index:1});
+            this.pages.push({title: 'button.register', component: 'RegisterPage',index:1});
           }else{
-            this.pages.push({title: 'page.logout', component: 'LoginPage', method: 'logout'});        
+            this.pages.push({title: 'page.logout', component: 'LoginPage', method: 'logout',index:1});        
           }
     });
 
@@ -78,6 +88,12 @@ export class MyApp {
       this.authService.startupTokenRefresh();
     });
   }
+
+   translateFun(val:string) {
+      localStorage.setItem('lang',val);
+      this.translate.use(val);
+      this.app.getRootNav().push('FooterPage');
+    }
 
   openPage(page:PageInterface) {
 

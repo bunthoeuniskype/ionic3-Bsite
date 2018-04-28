@@ -25,7 +25,7 @@ export class FooterPage {
   mySelectedIndex: number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.mySelectedIndex = navParams.data.tabIndex || 0;
+    this.mySelectedIndex = navParams.data.tabIndex || 0;   
   }
   
 }

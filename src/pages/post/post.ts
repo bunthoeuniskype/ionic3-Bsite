@@ -1,5 +1,5 @@
 import {OnInit, Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,MenuController } from 'ionic-angular';
 import {ArticleProvider} from '../../providers/article/article';
 import {CommonProvider} from "../../providers/common/common";
 import {Validators, FormBuilder} from '@angular/forms';
@@ -21,8 +21,9 @@ export class PostPage extends ProtectedPage implements OnInit{
   
  protected ArtData:any;
   
- constructor(public navCtrl: NavController, public navParams: NavParams,public ActicleP: ArticleProvider,public storage:Storage, public formBuilder:FormBuilder,private common: CommonProvider) {
+ constructor(public menu:MenuController,public navCtrl: NavController, public navParams: NavParams,public ActicleP: ArticleProvider,public storage:Storage, public formBuilder:FormBuilder,private common: CommonProvider) {
    super(navCtrl, navParams, storage);  
+     this.menu.enable(true);
  }
 
  ngOnInit(): any {      
@@ -39,4 +40,7 @@ onSubmit(artData) {
       .catch((e) => console.log("add post error", e));
   }
 
+  ionViewDidLoad() {
+  
+  }
 }

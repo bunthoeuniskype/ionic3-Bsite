@@ -3,7 +3,7 @@
   <ion-navbar>
     <ion-title>{{ 'page.login' | translate }}</ion-title>
       <ion-buttons end>
-        <button (click)="openPage('HomePage')">
+        <button (click)="openPage('HomePage')" color="secondary" ion-button>
           SKIP
         </button>
     </ion-buttons>
@@ -29,8 +29,8 @@
           <button ion-button full margin-top ion-button type="submit" [disabled]="!loginData.valid">{{ 'button.login' | translate }}</button>
 
         </form>
-          <button ion-button full (click)="loginWithFB()" color="primary">Login Facebook!</button> 
-          <button ion-button full  (click)="loginWithGP()" color="danger">Login Google Plus!</button> 
+          <button ion-button full (click)="loginWithFB()" color="primary">{{ 'button.login' | translate }} Facebook!</button> 
+          <button ion-button full  (click)="loginWithGP()" color="danger">{{ 'button.login' | translate }} Google Plus!</button> 
         <ion-row padding-top>
           <ion-col>
             <button ion-button clear block (click)="openPage('RegisterPage')">{{ 'button.new_registration' | translate }}</button>

@@ -9,6 +9,7 @@ import {Observable} from 'rxjs/Rx';
 import *  as AppConfig from '../app/config';
 import {CommonProvider} from "./common/common";
 import { MenuController,NavController,App } from 'ionic-angular';
+import {GlobalProvider} from './global/global';
 
 @Injectable()
 export class AuthService {  
@@ -26,6 +27,7 @@ export class AuthService {
     private menuCtrl: MenuController,
     // private navCtrl: NavController,
     private app:App,
+    public global: GlobalProvider,
     private authHttp: AuthHttp) {    
     this.cfg = AppConfig.cfg;
     this.storage.get('id_token').then(token => {
@@ -35,7 +37,7 @@ export class AuthService {
   }
 
  redirectToHome() {  
-    this.app.getRootNav().push('HomePage');
+    this.app.getRootNav().push('FooterPage');
     this.menuCtrl.enable(true);
   }
 
@@ -50,7 +52,7 @@ export class AuthService {
           }else{
                this.comm.presentToast(rs.message);
                this.saveData(data);             
-               this.idToken = rs.token;
+               this.idToken = rs.token;               
                this.scheduleRefresh();
                this.redirectToHome();
           }
@@ -81,6 +83,7 @@ export class AuthService {
     let rs = data.json();
     this.storage.set("user", rs.user);
     this.storage.set("id_token", rs.token);
+    localStorage.setItem('user_name',rs.user.name);
   }
 
   logout() {
@@ -88,7 +91,7 @@ export class AuthService {
     this.unscheduleRefresh();
     this.storage.remove('user');
     this.storage.remove('id_token');
-
+    localStorage.setItem('user_name',null);
   }
 
   isValid() {

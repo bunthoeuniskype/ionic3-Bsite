@@ -21,6 +21,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { ArticleProvider } from '../providers/article/article';
 import { CommonProvider } from '../providers/common/common';
+import { GlobalProvider } from '../providers/global/global';
 
 //import { TabsPage } from '../pages/tabs/tabs';
 //import { ProfilePage } from '../pages/profile-page/profile-page';
@@ -52,9 +53,9 @@ export function createTranslateLoader(http: Http) {
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp,{tabsPlacement: 'bottom'}),
+    IonicModule.forRoot(MyApp,{tabsPlacement: 'bottom',swipeBackEnabled: true,tabsHideOnSubPages: true}),
     IonicStorageModule.forRoot(),
-    HttpModule,
+    HttpModule, 
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -87,7 +88,8 @@ export function createTranslateLoader(http: Http) {
     Facebook,
     GooglePlus,
     ArticleProvider,
-    CommonProvider
+    CommonProvider,
+    GlobalProvider
   ]
 })
 export class AppModule {}

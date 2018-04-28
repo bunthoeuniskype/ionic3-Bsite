@@ -3,12 +3,20 @@
 <ion-menu [content]="content">
   <ion-header>
     <ion-toolbar>
-      <ion-title>BSite</ion-title>
+      <ion-title>KH-FEEDS</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <ion-content>
-    <ion-list>
+    <ion-item-group>
+    <ion-item-divider color="light"> {{ 'label.language' | translate }}</ion-item-divider>
+      <button menuClose ion-item *ngFor="let v of langs" (click)="translateFun(v.value)">
+        {{v.title | translate }}
+      </button>
+    </ion-item-group>
+
+    <ion-list>   
+      <ion-item-divider color="light">{{ 'label.account' | translate }}</ion-item-divider> 
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title | translate }}
       </button>

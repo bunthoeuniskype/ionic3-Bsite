@@ -49,7 +49,7 @@ presentAlert(msg :any) {
   }
 
   redirectToHome() {  
-    this.navCtrl.push('HomePage');
+    this.navCtrl.push('FooterPage');
     this.menuCtrl.enable(true);
   }
 

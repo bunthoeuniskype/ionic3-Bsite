@@ -81,7 +81,7 @@ export default StyleSheet.create({
   },
   'page-chat chat-message left-bubble': {
     'position': 'relative',
-    'background': '#ffffff',
+    'background': '#d8f0f5',
     'borderTopRightRadius': '.4em',
     'borderBottomLeftRadius': '.4em',
     'borderBottomRightRadius': '.4em',

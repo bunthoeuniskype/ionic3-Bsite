@@ -1,14 +1,17 @@
 {
+  "english": "English",
+  "khmer": "Khmer",
   "label": {
     "email_or_name": "Email or Username",
     "email": "Email address",
     "password": "Password",
-    "name": "Name",
-    "password": "Password",
+    "name": "Name",  
     "confirm_password" : "Confirm password",
     "title" : "Title",
     "author_name": "Author",
-    "pages": "Pages"
+    "pages": "Pages",
+    "language":"Languages",
+    "account":"Account"
   },
   "button" : {
     "login" : "Login",

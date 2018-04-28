@@ -38,7 +38,7 @@ constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen
     statusBar.styleDefault();
     splashScreen.hide();
   });
-  console.log(this.ref);
+ 
   this.ref.on('value', resp => {
     this.rooms = [];
     this.rooms = snapshotToArray(resp);
@@ -55,7 +55,7 @@ addRoom() {
   }
 
 joinRoom(key) {
-  this.navCtrl.setRoot('ChatPage', {
+  this.navCtrl.setRoot("ChatPage", {
     key:key,
     nickname:this.navParams.get("nickname")
   });

@@ -78,7 +78,7 @@ offStatus:boolean = false;
 
   this.offStatus = true;
 
-  this.navCtrl.setRoot('RoomPage', {
+  this.navCtrl.setRoot("RoomPage", {
     nickname:this.nickname
   });
 }

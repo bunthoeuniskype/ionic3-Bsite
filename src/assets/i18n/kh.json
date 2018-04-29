@@ -29,6 +29,7 @@
     "register" : "ការចុះឈ្មោះថ្មី",
     "forgotten_password" : "Password recovery",
     "profile" : "Profile",
+    "infodevelop":"Developer Info",
     "books" : {
       "list" : "My books",
       "add": "Add book",

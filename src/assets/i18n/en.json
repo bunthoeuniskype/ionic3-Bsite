@@ -29,6 +29,7 @@
     "register" : "New registration",
     "forgotten_password" : "Password recovery",
     "profile" : "Profile",
+    "infodevelop":"Developer Info",
     "books" : {
       "list" : "My books",
       "add": "Add book",

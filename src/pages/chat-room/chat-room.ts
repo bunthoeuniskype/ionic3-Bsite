@@ -54,13 +54,8 @@ constructor(public menu:MenuController,platform: Platform,storage:Storage, statu
 }
 
 addRoom() {
-  this.navCtrl.push("AddChatRoomPage");
+  this.navCtrl.setRoot("AddChatRoomPage");
 }
-
-  ionViewDidLoad() {
-    this.menu.enable(true);
-    //console.log('ionViewDidLoad ChatRoomPage');
-  }
 
 joinRoom(key) {
   this.navCtrl.setRoot("ChatPage", {

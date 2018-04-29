@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {Nav, Platform,MenuController,App} from 'ionic-angular';
+import {Nav, Platform,MenuController,App,ModalController} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {AuthService} from '../providers/auth-service';
@@ -7,6 +7,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {Storage} from '@ionic/storage';
 import {FooterPage} from '../pages/footer/footer';
 import {GlobalProvider} from '../providers/global/global';
+import {UserModel} from '../models/user.model';
 
 export interface PageInterface {
   title: string;
@@ -28,9 +29,10 @@ export class MyApp {
   ];
   rootPage: any = 'FooterPage';
   public idToken: String;
+  public user: UserModel;
 
   pages: Array<{title: string, component: any, method?: any,index:Number}>;
-
+  accountP: Array<{title: string, component: any, method?: any,index:Number,icon:string}>;
   langs:Array<{title:string, value:string}>;
 
   constructor(
@@ -42,7 +44,7 @@ export class MyApp {
     public global: GlobalProvider,
     public menu: MenuController,    
     public app:App,
-    //public navCtrl: NavController,
+    public modalCtrl: ModalController ,
    public translate: TranslateService) {
 
     this.initializeApp();
@@ -65,17 +67,27 @@ export class MyApp {
       {title: 'english', value: 'en'},
     ];    
 
-
+    this.accountP = [];
     this.storage.get('id_token').then(token => {
             this.idToken = token;
           if (this.idToken === null) {
-            this.pages.push({title: 'button.login', component: 'LoginPage',index:1});
-            this.pages.push({title: 'button.register', component: 'RegisterPage',index:1});
+            this.accountP.push({title: 'button.login', component: 'LoginPage',index:1,icon:"login"});
+            this.accountP.push({title: 'button.register', component: 'RegisterPage',index:1,icon:"person-add"});
           }else{
-            this.pages.push({title: 'page.logout', component: 'LoginPage', method: 'logout',index:1});        
+            this.accountP.push({title: 'page.logout', component: 'LoginPage', method: 'logout',index:1,icon:"exit"});        
           }
     });
 
+    this.storage.get('user').then(user => {
+      this.user = user;
+    });
+
+  }
+
+  openModalProfile() {
+    let obj = {"user":this.user};   
+    let myModal = this.modalCtrl.create("ProfileModalPage",obj);
+    myModal.present();
   }
 
   initializeApp() {

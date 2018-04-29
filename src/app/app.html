@@ -8,19 +8,32 @@
   </ion-header>
 
   <ion-content>
+    <button menuClose ion-item *ngIf="user" (click)="openModalProfile()">
+    <ion-thumbnail class="profile-img" item-start>
+      <img src="user.image">
+    </ion-thumbnail> 
+     {{ user.name }} <ion-icon name="open" item-right></ion-icon>
+    </button>
     <ion-item-group>
     <ion-item-divider color="light"> {{ 'label.language' | translate }}</ion-item-divider>
       <button menuClose ion-item *ngFor="let v of langs" (click)="translateFun(v.value)">
-        {{v.title | translate }}
+        <ion-icon name="globe" item-start></ion-icon>  {{v.title | translate }}
       </button>
     </ion-item-group>
 
-    <ion-list>   
-      <ion-item-divider color="light">{{ 'label.account' | translate }}</ion-item-divider> 
+    <ion-list>         
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title | translate }}
+       <ion-icon name="{{p.icon}}" item-start></ion-icon> {{p.title | translate }}
       </button>
     </ion-list>
+
+    <ion-list>   
+      <ion-item-divider color="light">{{ 'label.account' | translate }}</ion-item-divider> 
+      <button menuClose ion-item *ngFor="let p of accountP" (click)="openPage(p)">
+       <ion-icon name="{{p.icon}}" item-start></ion-icon> {{p.title | translate }}
+      </button>
+    </ion-list>
+    
   </ion-content>
 
 </ion-menu>

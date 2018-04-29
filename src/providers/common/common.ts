@@ -1,4 +1,4 @@
-import { Injectable,Component,ViewChild  } from '@angular/core';
+import { Injectable,ViewChild  } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { LoadingController,AlertController,ToastController,App,MenuController,NavController  } from 'ionic-angular';

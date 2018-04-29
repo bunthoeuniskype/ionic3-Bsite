@@ -4,5 +4,6 @@ export class UserModel {
   public email: string;
   public password: string;
   public confirm_password?: string;
+  public image?: string;
    
 }

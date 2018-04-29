@@ -1,0 +1,33 @@
+<!--
+  Generated template for the ProfileModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>User Profile</ion-title>
+    <ion-buttons end>
+        <button (click)="closeModal()"  ion-button color="primary">
+           Cancel
+        </button>
+    </ion-buttons>
+  </ion-navbar>  
+</ion-header>
+
+<ion-content padding>
+    <div class="profile-card">
+        <img src="{{user.image}}" class="profile-image">
+        <div class="profile-name">{{user.name}}</div>
+    </div>
+
+    <ion-list padding>
+        <ion-item>
+            <b> {{ 'label.name' | translate }} </b>: {{user.name}}
+        </ion-item>      
+   
+        <ion-item>
+            <b>{{ 'label.email' | translate }} </b>: {{user.email}}
+        </ion-item>
+    </ion-list>
+</ion-content>

@@ -8,7 +8,7 @@ import {AuthHttp, JwtHelper, tokenNotExpired} from 'angular2-jwt';
 import {Observable} from 'rxjs/Rx';
 import *  as AppConfig from '../app/config';
 import {CommonProvider} from "./common/common";
-import { MenuController,NavController,App } from 'ionic-angular';
+import { MenuController,App } from 'ionic-angular';
 import {GlobalProvider} from './global/global';
 
 @Injectable()
